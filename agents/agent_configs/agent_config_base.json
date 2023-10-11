@@ -1,0 +1,11 @@
+{
+    "agent_name": "WebSearchAgent",
+    "agent_type": "WebSearch",
+    "type": "llm",
+    "model": "OpenAI",
+    "system_prompt": "Conduct a web search to gather information on the topic: ",
+    "capabilities": [
+        "scripts/web_search.py",
+        "scripts/text_generation.py"
+    ]
+}

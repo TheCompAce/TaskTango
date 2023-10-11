@@ -1,0 +1,1 @@
+python tools\create_zip.py -d .\ -o TaskTango.zip -e env,__pycache__,.vscode,.git,TaskTango.zip

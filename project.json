@@ -1,0 +1,131 @@
+{
+    "projectName": "TaskTango",
+    "description": "A multi-agent system for collaborative problem solving and code generation.",
+    "version": "0.1.0",
+    "license": "Apache License 2.0",
+    "mainFile": "main.py",
+    "dependencies": {
+        "transformers": "4.11.3",
+        "torch": "1.9.1",
+        "requests": "2.26.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/your-username/TaskTango"
+    },
+    "agents": [
+        {
+            "name": "WebSearchAgent",
+            "type": "WebSearch",
+            "configFile": "agents/agent_configs/web_search_agent.json"
+        }
+    ],
+    "groups": [],
+    "tasks": [],    
+    "projectDetails": {
+        "objective": "Create a self-evolving system of agents capable of tackling a variety of tasks.",
+        "milestones": [
+            {
+                "description": "Establish initial multi-agent framework",
+                "dueDate": "2023-11-01"
+            },
+            {
+                "description": "Implement web searching capability",
+                "dueDate": "2023-12-01"
+            }
+        ],
+        "technologies": ["Python", "PyTorch", "Transformers"],
+        "researchNotes": {
+            "MultiAgentSystemArchitectures": {
+                "description": "Multi-agent systems are composed of multiple interacting agents which can be autonomous or cooperative components of a system. They can adapt to changing conditions by learning from their environment and each other, which aligns with TaskTango's goal of having agents discuss problems and generate code collaboratively.",
+                "architectures": [
+                    "Centralized",
+                    "Decentralized",
+                    "Hybrid"
+                ]
+            },
+            "AgentCommunicationProtocols": {
+                "description": "Agent Communication Protocols are crucial for enabling interaction among agents in a multi-agent system. They define the rules and formats that agents follow to communicate, ensuring a standardized way of interaction which is crucial for effective collaboration in TaskTango.",
+                "communicationApproaches": [
+                    "Direct Communication",
+                    "Indirect Communication"
+                ]
+            },
+            "HumanInTheLoopSystems": {
+                "description": "Human-in-the-loop systems incorporate human interactions in the decision-making process of machine learning models, enabling real-time intervention during runtime. The continuous feedback loop created with human intervention helps reduce errors and improve the model's performance, aligning with TaskTango's goal of having a human intervention mechanism."
+            }
+        }
+    },
+    "generalDesign": {
+        "architecture": "Modular architecture with distinct roles for agents, grouped by functions, and orchestrated through tasks.",
+        "agentTypeKey": ["llm", "tool", "human"],
+        "longTermMemory": "Exploration of Word2Vec/VectorDB for long-term memory in agents is planned for future development.",
+        "taskDecomposition": "Task decomposition functionality shifted to a global system prompt to help agents handle smaller, manageable tasks.",
+        "selfGeneratedPlugins": "TaskTango will create its own plugins from scratch for future tasks or feature enhancements.",
+        "verificationSystem": "Implementation of a verification system to prevent abuse and ensure the integrity of operations.",
+        "humanIntervention": "Real-time intervention mechanism allowing pause, exit, or input injection into the system.",
+        "agentCommunication": "Agents communicate through a shared medium, discussing problems and generating code collaboratively.",
+        "dynamicCapabilities": "Capabilities as paths to script files that can be dynamically added, with a verification system to prevent abuse."
+    },
+    "sessionDiscussions": [
+        {
+            "date": "2023-10-09",
+            "discussionPoints": [
+                "Reviewed and discussed the projects on GitHub - AgentVerse and AutoGen.",
+                "Discussed the implementation of a Human Intervention Mechanism to pause, exit, or inject input in real-time.",
+                "Decided to have a folder of text files to hold prompts for agents and map these in the agent configuration files.",
+                "Created a `requirements.txt` file to list the libraries needed for the project.",
+                "Chose the project name 'TaskTango' and organized the project directory structure.",
+                "Added `modules/llm.py` for handling backend LLMs.",
+                "Created LICENSE file set to Apache 2.0, drafted a basic README.md, and created a detailed project.json.",
+                "Expanded project.json to include 'toDo', 'projectDetails', and 'generalDesign' sections."
+            ],
+            "decisions": [
+                "Project name finalized as 'TaskTango'.",
+                "The project will have a folder of text files to hold prompts for agents.",
+                "The LICENSE file is set to Apache 2.0.",
+                "The project directory will have a 'modules' folder, with `llm.py` being one of the modules."
+            ]
+        },
+        {
+            "date": "2023-10-09",
+            "discussionPoints": [
+                "Reviewed the content of llm.py and main.py.",
+                "Created a 'menus' folder within the 'modules' directory.",
+                "Moved setup functions from main.py to a new file, main_menu.py.",
+                "Implemented a console menu in main_menu.py.",
+                "Updated main.py to call the menu from main_menu.py."
+            ],
+            "decisions": [
+                "Decided to use a console interface for the project.",
+                "Created main_menu.py to handle the main console menu."
+            ]
+        }        
+    ],
+    "toDo": [
+        {
+            "task": "Implement menu logic in main_menu.py",
+            "status": "Completed"
+        },
+        {
+            "task": "Develop multi-agent conversation framework",
+            "status": "Pending"
+        },
+        {
+            "task": "Create agent, group, and task setup functions in main.py",
+            "status": "Pending"
+        },
+        {
+            "task": "Implement Human Intervention Mechanism",
+            "status": "Pending"
+        },
+        {
+            "task": "Design and implement a verification system for dynamic capabilities",
+            "status": "Pending"
+        },
+        {
+            "task": "Explore long-term memory solutions for agents",
+            "status": "Pending"
+        }
+    ]
+}

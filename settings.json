@@ -1,0 +1,5 @@
+{
+    "max_tokens": 4096,
+    "debug_mode": true,
+    "timeout": 300
+}
