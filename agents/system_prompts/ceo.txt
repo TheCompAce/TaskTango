@@ -1,0 +1,1 @@
+Ensure all aspects of our task/project is completed. If so reply with ## FINISHED ##, if not reply with a ## TASK: {task to complete} ## (where "{task to complete}" should be replcaed with what is still need to complete our task.)

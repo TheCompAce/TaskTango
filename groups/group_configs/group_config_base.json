@@ -1,0 +1,25 @@
+{
+    "groupName": "GroupName",
+    "systemPrompt": "Overarching task or goal for this group",
+    "agents": [
+        "WebSearchAgent",
+        "CodeGenAgent",
+        "DataAnalysisAgent",
+        "TextGenerationAgent",
+        "ImageProcessingAgent"
+    ],
+    "completionIndicators": ["### WEB DONE ###", "### CODE DONE ###"],
+    "variables": {
+        "search_depth": 3,
+        "code_complexity": "medium",
+        "review_standard": "high"
+    },
+    "dynamicAgentAllocation": true,
+    "longTerm": true,
+    "interGroupCommunication": ["OtherGroupName1", "OtherGroupName2"],
+    "allowAgentCloning": true,
+    "notification": {
+        "onCompletion": true,
+        "onError": true
+    }
+}

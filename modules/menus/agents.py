@@ -5,8 +5,8 @@ def add_agent():
     # Gather information for a new agent
     agent_info = {}
     agent_info["agent_name"] = input("Enter the name of the agent: ")
-    agent_info["agent_type"] = input("Enter the type of the agent: ")
-    agent_info["type"] = input("Enter the overall type (e.g., llm): ")
+    agent_info["description"] = input("Enter the description of the agent: ")
+    agent_info["type"] = input("Enter the overall type (e.g., llm, human, custom): ")
     agent_info["model"] = input("Enter the model name (e.g., OpenAI): ")
     agent_info["system_prompt"] = input("Enter the system prompt for the agent: ")
     agent_info["capabilities"] = input("Enter the capabilities (comma-separated): ").split(",")
@@ -22,8 +22,9 @@ def edit_agent():
     print("Available agents for editing:")
     for idx, agent_file in enumerate(agent_files):
         print(f"{idx+1}. {agent_file[:-5]}")
-        
-    choice = input("Select an agent to edit (by number): ")
+    choice = input("Select an agent to edit (by number) or type 'back' to go back: ")
+    if choice.lower() == "back":
+        return
     selected_agent_file = agent_files[int(choice) - 1]
     
     # Load the selected agent's configuration
@@ -33,7 +34,7 @@ def edit_agent():
         
     # Edit the agent's configuration
     for key in agent_info.keys():
-        new_value = input(f"Current {key}: {agent_info[key]}\\nEnter new value (or press Enter to keep current): ")
+        new_value = input(f"Current {key}: {agent_info[key]} -- Enter new value (or press Enter to keep current): ")
         if new_value:
             agent_info[key] = new_value
             
@@ -47,8 +48,9 @@ def delete_agent():
     print("Available agents for deletion:")
     for idx, agent_file in enumerate(agent_files):
         print(f"{idx+1}. {agent_file[:-5]}")
-        
-    choice = input("Select an agent to delete (by number): ")
+    choice = input("Select an agent to delete (by number) or type 'back' to go back: ")
+    if choice.lower() == "back":
+        return
     selected_agent_file = agent_files[int(choice) - 1]
     
     # Confirm before deletion

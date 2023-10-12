@@ -1,7 +1,7 @@
 from enum import Enum
 import os
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 import requests
 
 class ModelTypes(Enum):
@@ -9,6 +9,7 @@ class ModelTypes(Enum):
     OpenAI4 = "OpenAI4"
     Mistral = "Mistral"
     StableBeluga7B = "StableBeluga7B"
+    Zephyr7bAlpha = "Zephyr7bAlpha"
 
 class LLM:
     def __init__(self, model_type):
@@ -18,12 +19,15 @@ class LLM:
         self.model = ModelTypes(model_type)
         self.modelObj = None
         self.tokenizerObj = None
+        self.pipeObj = None
 
     def SetupModel(self):
         if self.model == ModelTypes.Mistral:
             return self._setup_mistral()
         elif self.model == ModelTypes.StableBeluga7B:
             return self._setup_beluga_7b()
+        elif self.model == ModelTypes.Zephyr7bAlpha:
+            return self._setup_zephyr_7b()
 
     def ask(self, system_prompt, user_prompt, model_type=None):
         return self._ask(system_prompt, user_prompt, model_type)
@@ -42,6 +46,8 @@ class LLM:
             return self._ask_mistral(system_prompt, user_prompt)
         elif model_type == ModelTypes.StableBeluga7B:
             return self._ask_stable_beluga_7b(system_prompt, user_prompt)
+        elif model_type == ModelTypes.Zephyr7bAlpha:
+            return self._ask_zephyr_7b(system_prompt, user_prompt)
 
     def _ask_openai(self, system_prompt, user_prompt, model = "gpt-3.5-turbo", max_tokens=4096):
         # Placeholder for actual OpenAI API request
@@ -95,6 +101,7 @@ class LLM:
             self.modelObj = AutoModelForCausalLM.from_pretrained("stabilityai/StableBeluga-7B", torch_dtype=torch.float16, low_cpu_mem_usage=True, device_map="auto")
             self.tokenizerObj = AutoTokenizer.from_pretrained("stabilityai/StableBeluga-7B", use_fast=False)
 
+
     def _ask_stable_beluga_7b(self, system_prompt, user_prompt):
         if self.tokenizerObj is None or self.modelObj is None:
             self._setup_beluga_7b()
@@ -102,6 +109,24 @@ class LLM:
         inputs = self.tokenizerObj(prompt, return_tensors="pt").to("cuda")
         output = self.modelObj.generate(**inputs, do_sample=True, top_p=0.95, top_k=0, max_new_tokens=4096)
         return self.tokenizerObj.decode(output[0], skip_special_tokens=True)
+
+    def _ask_zephyr_7b(self, system_prompt, user_prompt):
+        if self.pipeObj is None:
+            self._setup_zephyr_7b()
+        messages = [
+            {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {"role": "user", "content": user_prompt},
+        ]
+        prompt = self.pipeObj.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        outputs = self.pipeObj(prompt, max_new_tokens=256, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
+        return outputs[0]["generated_text"]
+
+    def _setup_zephyr_7b(self):
+        if self.pipeObj is None:
+            self.pipeObj= pipeline("text-generation", model="HuggingFaceH4/zephyr-7b-alpha", torch_dtype=torch.bfloat16, device_map="auto")
 
 
     def __repr__(self):

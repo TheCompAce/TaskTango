@@ -1,0 +1,10 @@
+{
+    "agent_name": "CEO",
+    "description": "Head of Company",
+    "type": "llm",
+    "model": "OpenAI",
+    "system_prompt": "agents/system_prompts/ceo.txt",
+    "capabilities": [
+        ""
+    ]
+}

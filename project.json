@@ -100,12 +100,48 @@
                 "Decided to use a console interface for the project.",
                 "Created main_menu.py to handle the main console menu."
             ]
-        }        
+        },
+        {
+            "date": "2023-10-10",
+            "discussionPoints": [
+                "Reviewed the content of main_menu.py.",
+                "Designed and implemented an agents management system in agents.py.",
+                "Added 'Back' options to the edit and delete functions in agents.py."
+            ],
+            "decisions": [
+                "Added a Technology Manager role to the team.",
+                "Implemented a new agents.py file with functionalities to add, edit, and delete agent configurations."
+            ]
+        },
+        {
+            "date": "2023-10-12",
+            "discussionPoints": [
+                "Designed and implemented a groups management system in groups.py.",
+                "Added 'add_group', 'edit_group', and 'delete_group' functions to groups.py."
+            ],
+            "decisions": [
+                "Added a listing feature to the 'edit_group' function.",
+                "Added 'List' and 'Back' options to 'delete_group' function."
+            ]
+        }
+                  
     ],
-    "toDo": [
+    "toDo": [        
         {
             "task": "Implement menu logic in main_menu.py",
             "status": "Completed"
+        },
+        {
+            "task": "Implement agents management system in modules/menus/agents.py",
+            "status": "Completed"
+        },
+        {
+            "task": "Implement groups management system in modules/menus/groups.py",
+            "status": "Completed"
+        },
+        {
+            "task": "Implement task management system in modules/menus/task.py",
+            "status": "Pending"
         },
         {
             "task": "Develop multi-agent conversation framework",

@@ -1,5 +1,7 @@
-def setup_agent(config):
-    print("Setting up agent with configuration:", config)
+from modules.menus.agents import agent_menu
+
+def setup_agent():
+    agent_menu()
 
 def setup_group(group_config):
     print("Setting up group with configuration:", group_config)
@@ -23,7 +25,7 @@ def show_menu():
         print("5. Exit")
         choice = input("Enter your choice: ")
         if choice == '1':
-            setup_agent("Agent Config Here")
+            setup_agent()
         elif choice == '2':
             setup_group("Group Config Here")
         elif choice == '3':
