@@ -1,0 +1,17 @@
+{
+    "taskName": "TaskName",
+    "description": "Description of the task",
+    "createdBy": "Identifier for creator",
+    "groups": [
+        "GroupName1",
+        "GroupName2"
+    ],
+    "systemPrompt": "System prompt for the task",
+    "dependencies": ["Task1", "Task2"],
+    "completionIndicators": ["Indicator1", "Indicator2"],
+    "variables": {
+        "customVar1": "value1",
+        "customVar2": "value2"
+    },
+    "dynamicAllocation": true
+}

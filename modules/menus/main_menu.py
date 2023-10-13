@@ -1,10 +1,11 @@
 from modules.menus.agents import agent_menu
+from modules.menus.groups import groups_menu
 
 def setup_agent():
     agent_menu()
 
-def setup_group(group_config):
-    print("Setting up group with configuration:", group_config)
+def setup_group():
+    groups_menu()
 
 def setup_task(task_config):
     print("Setting up task with configuration:", task_config)
@@ -27,7 +28,7 @@ def show_menu():
         if choice == '1':
             setup_agent()
         elif choice == '2':
-            setup_group("Group Config Here")
+            setup_group()
         elif choice == '3':
             setup_task("Task Config Here")
         elif choice == '4':

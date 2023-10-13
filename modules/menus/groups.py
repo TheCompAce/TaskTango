@@ -16,12 +16,12 @@ def add_group():
     group_info["notification"] = input("Enter the notification: ")
 
     # Save the group information to a JSON file
-    with open(f"groups/{group_info['groupName']}.json", 'w') as f:
+    with open(f"groups/group_configs/{group_info['groupName']}.json", 'w') as f:
         json.dump(group_info, f, indent=4)
 
 def edit_group():
     try:
-        available_groups = os.listdir("groups")
+        available_groups = os.listdir("groups/group_configs")
         print("Available Groups:")
         for group in available_groups:
             print(f" - {group.replace('.json', '')}")
@@ -51,7 +51,7 @@ def edit_group():
 
 def delete_group():
     try:
-        available_groups = os.listdir("groups")
+        available_groups = os.listdir("groups/group_configs")
         print("Available Groups to Delete:")
         for group in available_groups:
             print(f" - {group.replace('.json', '')}")
