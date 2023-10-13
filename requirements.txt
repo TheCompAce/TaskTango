@@ -1,3 +1,6 @@
 transformers
 torch
 requests
+gensim
+scikit-learn
+nltk

@@ -8,7 +8,6 @@ def add_task():
     task_info['description'] = input('Enter the description of the task: ')
     task_info['createdBy'] = input('Enter the identifier for the creator: ')
     task_info["systemPrompt"] = input("Enter the system prompt (or file path): ")
-    task_info['model'] = input('Enter the model for the task:(i.e. OpenAI) ')
     task_info['groups'] = input('Enter the groups involved (comma-separated): ').split(',')
     task_info['variables'] = input('Enter variables (comma-separated): ').split(',')
     task_info['completionIndicators'] = input('Enter completion indicators (comma-separated): ').split(',')

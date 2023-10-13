@@ -1,192 +1,220 @@
-{
-    "projectName": "TaskTango",
-    "description": "A multi-agent system for collaborative problem solving and code generation.",
-    "version": "0.1.0",
-    "license": "Apache License 2.0",
-    "mainFile": "main.py",
-    "dependencies": {
-        "transformers": "4.11.3",
-        "torch": "1.9.1",
-        "requests": "2.26.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/your-username/TaskTango"
-    },
-    "MainLoopArchitecture": {
-        "Threading": "Main loop runs on a separate thread to allow for real-time user interactions.",
-        "Communication": "Uses message queues for thread-safe communication between the main thread and task thread.",
-        "Commands": [
-            "start",
-            "stop",
-            "pause",
-            "inject prompt"
-        ],
-        "ReturnData": "Task thread enqueues status updates for the main thread to dequeue and present to the user."
-    },      
-    "projectDetails": {
-        "objective": "Create a self-evolving system of agents capable of tackling a variety of tasks.",
-        "technologies": ["Python", "PyTorch", "Transformers"],
-        "researchNotes": {
-            "MultiAgentSystemArchitectures": {
-                "description": "Multi-agent systems are composed of multiple interacting agents which can be autonomous or cooperative components of a system. They can adapt to changing conditions by learning from their environment and each other, which aligns with TaskTango's goal of having agents discuss problems and generate code collaboratively.",
-                "architectures": [
-                    "Centralized",
-                    "Decentralized",
-                    "Hybrid"
-                ]
-            },
-            "AgentCommunicationProtocols": {
-                "description": "Agent Communication Protocols are crucial for enabling interaction among agents in a multi-agent system. They define the rules and formats that agents follow to communicate, ensuring a standardized way of interaction which is crucial for effective collaboration in TaskTango.",
-                "communicationApproaches": [
-                    "Direct Communication",
-                    "Indirect Communication"
-                ]
-            },
-            "HumanInTheLoopSystems": {
-                "description": "Human-in-the-loop systems incorporate human interactions in the decision-making process of machine learning models, enabling real-time intervention during runtime. The continuous feedback loop created with human intervention helps reduce errors and improve the model's performance, aligning with TaskTango's goal of having a human intervention mechanism."
+    {
+        "projectName": "TaskTango",
+        "description": "A multi-agent system for collaborative problem solving and code generation.",
+        "version": "0.1.0",
+        "license": "Apache License 2.0",
+        "mainFile": "main.py",
+        "dependencies": {
+            "transformers": "4.11.3",
+            "torch": "1.9.1",
+            "requests": "2.26.0"
+        },
+        "repository": {
+            "type": "git",
+            "url": "https://github.com/your-username/TaskTango"
+        },
+        "MainLoopArchitecture": {
+            "Threading": "Main loop runs on a separate thread to allow for real-time user interactions.",
+            "Communication": "Uses message queues for thread-safe communication between the main thread and task thread.",
+            "Commands": [
+                "start",
+                "stop",
+                "pause",
+                "inject prompt"
+            ],
+            "ReturnData": "Task thread enqueues status updates for the main thread to dequeue and present to the user."
+        },      
+        "projectDetails": {
+            "objective": "Create a self-evolving system of agents capable of tackling a variety of tasks.",
+            "technologies": ["Python", "PyTorch", "Transformers"],
+            "researchNotes": {
+                "MultiAgentSystemArchitectures": {
+                    "description": "Multi-agent systems are composed of multiple interacting agents which can be autonomous or cooperative components of a system. They can adapt to changing conditions by learning from their environment and each other, which aligns with TaskTango's goal of having agents discuss problems and generate code collaboratively.",
+                    "architectures": [
+                        "Centralized",
+                        "Decentralized",
+                        "Hybrid"
+                    ]
+                },
+                "AgentCommunicationProtocols": {
+                    "description": "Agent Communication Protocols are crucial for enabling interaction among agents in a multi-agent system. They define the rules and formats that agents follow to communicate, ensuring a standardized way of interaction which is crucial for effective collaboration in TaskTango.",
+                    "communicationApproaches": [
+                        "Direct Communication",
+                        "Indirect Communication"
+                    ]
+                },
+                "HumanInTheLoopSystems": {
+                    "description": "Human-in-the-loop systems incorporate human interactions in the decision-making process of machine learning models, enabling real-time intervention during runtime. The continuous feedback loop created with human intervention helps reduce errors and improve the model's performance, aligning with TaskTango's goal of having a human intervention mechanism."
+                }
             }
-        }
-    },
-    "generalDesign": {
-        "architecture": "Modular architecture with distinct roles for agents, grouped by functions, and orchestrated through tasks.",
-        "agentTypeKey": ["llm", "tool", "human"],
-        "longTermMemory": "Exploration of Word2Vec/VectorDB for long-term memory in agents is planned for future development.",
-        "taskDecomposition": "Task decomposition functionality shifted to a global system prompt to help agents handle smaller, manageable tasks.",
-        "selfGeneratedPlugins": "TaskTango will create its own plugins from scratch for future tasks or feature enhancements.",
-        "verificationSystem": "Implementation of a verification system to prevent abuse and ensure the integrity of operations.",
-        "humanIntervention": "Real-time intervention mechanism allowing pause, exit, or input injection into the system.",
-        "agentCommunication": "Agents communicate through a shared medium, discussing problems and generating code collaboratively.",
-        "dynamicCapabilities": "Capabilities as paths to script files that can be dynamically added, with a verification system to prevent abuse."
-    },
-    "sessionDiscussions": [
-        {
-            "date": "2023-10-09",
-            "discussionPoints": [
-                "Reviewed and discussed the projects on GitHub - AgentVerse and AutoGen.",
-                "Discussed the implementation of a Human Intervention Mechanism to pause, exit, or inject input in real-time.",
-                "Decided to have a folder of text files to hold prompts for agents and map these in the agent configuration files.",
-                "Created a `requirements.txt` file to list the libraries needed for the project.",
-                "Chose the project name 'TaskTango' and organized the project directory structure.",
-                "Added `modules/llm.py` for handling backend LLMs.",
-                "Created LICENSE file set to Apache 2.0, drafted a basic README.md, and created a detailed project.json.",
-                "Expanded project.json to include 'toDo', 'projectDetails', and 'generalDesign' sections."
-            ],
-            "decisions": [
-                "Project name finalized as 'TaskTango'.",
-                "The project will have a folder of text files to hold prompts for agents.",
-                "The LICENSE file is set to Apache 2.0.",
-                "The project directory will have a 'modules' folder, with `llm.py` being one of the modules."
-            ]
         },
-        {
-            "date": "2023-10-09",
-            "discussionPoints": [
-                "Reviewed the content of llm.py and main.py.",
-                "Created a 'menus' folder within the 'modules' directory.",
-                "Moved setup functions from main.py to a new file, main_menu.py.",
-                "Implemented a console menu in main_menu.py.",
-                "Updated main.py to call the menu from main_menu.py."
-            ],
-            "decisions": [
-                "Decided to use a console interface for the project.",
-                "Created main_menu.py to handle the main console menu."
-            ]
+        "generalDesign": {
+            "architecture": "Modular architecture with distinct roles for agents, grouped by functions, and orchestrated through tasks.",
+            "agentTypeKey": ["llm", "tool", "human"],
+            "longTermMemory": "Implemented a VectorDatabase using gensim and scikit-learn for long-term memory to store and retrieve past conversations based on vector similarity.",
+            "taskDecomposition": "Task decomposition functionality shifted to a global system prompt to help agents handle smaller, manageable tasks.",
+            "selfGeneratedPlugins": "TaskTango will create its own plugins from scratch for future tasks or feature enhancements.",
+            "verificationSystem": "Implementation of a verification system to prevent abuse and ensure the integrity of operations.",
+            "humanIntervention": "Real-time intervention mechanism allowing pause, exit, or input injection into the system.",
+            "agentCommunication": "Agents communicate through a shared medium, discussing problems and generating code collaboratively.",
+            "dynamicCapabilities": "Capabilities as paths to script files that can be dynamically added, with a verification system to prevent abuse."
         },
-        {
-            "date": "2023-10-10",
-            "discussionPoints": [
-                "Reviewed the content of main_menu.py.",
-                "Designed and implemented an agents management system in agents.py.",
-                "Added 'Back' options to the edit and delete functions in agents.py."
-            ],
-            "decisions": [
-                "Added a Technology Manager role to the team.",
-                "Implemented a new agents.py file with functionalities to add, edit, and delete agent configurations."
-            ]
-        },
-        {
-            "date": "2023-10-12",
-            "discussionPoints": [
-                "Designed and implemented a groups management system in groups.py.",
-                "Added 'add_group', 'edit_group', and 'delete_group' functions to groups.py."
-            ],
-            "decisions": [
-                "Added a listing feature to the 'edit_group' function.",
-                "Added 'List' and 'Back' options to 'delete_group' function."
-            ]
-        },
-        {
-            "date": "2023-10-12",
-            "discussionPoints": [
-                "Reviewed the finalized code for tasks.py.",
-                "Discussed the task configuration structure."
-            ],
-            "decisions": [
-                "Finalized the tasks.py file with functionalities to add, edit, and delete task configurations."
-            ]
-        },
-        {
-            "Date": "2023-10-12",
-            "Changes": [
-                "Discussed the architecture of the main loop.",
-                "Decided to run the main loop on a separate thread for real-time user interactions.",
-                "Agreed to use message queues for communication between the main thread and task thread.",
-                "Updated the project.json to include the 'MainLoopArchitecture' section."
-            ],
-            "FilesModified": [
-                "project.json"
-            ]
-        },
-        {
-            "Date": "2023-10-12",
-            "Changes": [
-                "Discussed the architecture of the main loop.",
-                "Decided to run the main loop on a separate thread for real-time user interactions.",
-                "Agreed to use message queues for communication between the main thread and task thread.",
-                "Updated the project.json to include the 'MainLoopArchitecture' section."
-            ],
-            "FilesModified": [
-                "project.json"
-            ]
-        }               
-    ],
-    "toDo": [        
-        {
-            "task": "Implement menu logic in main_menu.py",
-            "status": "Completed"
-        },
-        {
-            "task": "Implement agents management system in modules/menus/agents.py",
-            "status": "Completed"
-        },
-        {
-            "task": "Implement groups management system in modules/menus/groups.py",
-            "status": "Completed"
-        },
-        {
-            "task": "Implement task management system in modules/menus/task.py",
-            "status": "Completed"
-        },
-        {
-            "task": "Create agent, group, and task setup functions in main.py",
-            "status": "Completed"
-        },
-        {
-            "task": "Develop multi-agent conversation framework",
-            "status": "Pending"
-        },
-        {
-            "task": "Implement Human Intervention Mechanism",
-            "status": "Pending"
-        },
-        {
-            "task": "Design and implement a verification system for dynamic capabilities",
-            "status": "Pending"
-        },
-        {
-            "task": "Explore long-term memory solutions for agents",
-            "status": "Pending"
-        }
-    ]
-}
+        "sessionDiscussions": [
+            {
+                "date": "2023-10-09",
+                "discussionPoints": [
+                    "Reviewed and discussed the projects on GitHub - AgentVerse and AutoGen.",
+                    "Discussed the implementation of a Human Intervention Mechanism to pause, exit, or inject input in real-time.",
+                    "Decided to have a folder of text files to hold prompts for agents and map these in the agent configuration files.",
+                    "Created a `requirements.txt` file to list the libraries needed for the project.",
+                    "Chose the project name 'TaskTango' and organized the project directory structure.",
+                    "Added `modules/llm.py` for handling backend LLMs.",
+                    "Created LICENSE file set to Apache 2.0, drafted a basic README.md, and created a detailed project.json.",
+                    "Expanded project.json to include 'toDo', 'projectDetails', and 'generalDesign' sections."
+                ],
+                "decisions": [
+                    "Project name finalized as 'TaskTango'.",
+                    "The project will have a folder of text files to hold prompts for agents.",
+                    "The LICENSE file is set to Apache 2.0.",
+                    "The project directory will have a 'modules' folder, with `llm.py` being one of the modules."
+                ]
+            },
+            {
+                "date": "2023-10-09",
+                "discussionPoints": [
+                    "Reviewed the content of llm.py and main.py.",
+                    "Created a 'menus' folder within the 'modules' directory.",
+                    "Moved setup functions from main.py to a new file, main_menu.py.",
+                    "Implemented a console menu in main_menu.py.",
+                    "Updated main.py to call the menu from main_menu.py."
+                ],
+                "decisions": [
+                    "Decided to use a console interface for the project.",
+                    "Created main_menu.py to handle the main console menu."
+                ]
+            },
+            {
+                "date": "2023-10-10",
+                "discussionPoints": [
+                    "Reviewed the content of main_menu.py.",
+                    "Designed and implemented an agents management system in agents.py.",
+                    "Added 'Back' options to the edit and delete functions in agents.py."
+                ],
+                "decisions": [
+                    "Added a Technology Manager role to the team.",
+                    "Implemented a new agents.py file with functionalities to add, edit, and delete agent configurations."
+                ]
+            },
+            {
+                "date": "2023-10-12",
+                "discussionPoints": [
+                    "Designed and implemented a groups management system in groups.py.",
+                    "Added 'add_group', 'edit_group', and 'delete_group' functions to groups.py."
+                ],
+                "decisions": [
+                    "Added a listing feature to the 'edit_group' function.",
+                    "Added 'List' and 'Back' options to 'delete_group' function."
+                ]
+            },
+            {
+                "date": "2023-10-12",
+                "discussionPoints": [
+                    "Reviewed the finalized code for tasks.py.",
+                    "Discussed the task configuration structure."
+                ],
+                "decisions": [
+                    "Finalized the tasks.py file with functionalities to add, edit, and delete task configurations."
+                ]
+            },
+            {
+                "Date": "2023-10-12",
+                "Changes": [
+                    "Discussed the architecture of the main loop.",
+                    "Decided to run the main loop on a separate thread for real-time user interactions.",
+                    "Agreed to use message queues for communication between the main thread and task thread.",
+                    "Updated the project.json to include the 'MainLoopArchitecture' section."
+                ],
+                "FilesModified": [
+                    "project.json"
+                ]
+            },
+            {
+                "Date": "2023-10-12",
+                "Changes": [
+                    "Discussed the architecture of the main loop.",
+                    "Decided to run the main loop on a separate thread for real-time user interactions.",
+                    "Agreed to use message queues for communication between the main thread and task thread.",
+                    "Updated the project.json to include the 'MainLoopArchitecture' section."
+                ],
+                "FilesModified": [
+                    "project.json"
+                ]
+            },
+            {
+                "Date": "2023-10-13",
+                "Changes": [
+                    "Reviewed and discussed the code for tasks.py.",
+                    "Finalized the mechanism for dynamically determining group order.",
+                    "Implemented 'get_group_config' to fetch group configuration.",
+                    "Updated the 'execute' function to process groups based on the dynamically determined order.",
+                    "Added the latest session to project.json."
+                ],
+                "FilesModified": [
+                    "tasks.py",
+                    "project.json"
+                ]
+            },
+            {
+                "Date": "2023-10-13",
+                "Changes": [
+                    "Discussed and implemented a VectorDatabase for long-term memory to store and retrieve past conversations based on vector similarity.",
+                    "Enhanced text preprocessing to include stemming and stopword removal.",
+                    "Added functionality to handle error logging, database migration, and backup.",
+                    "Created functionalities for real-time updating and automated training of the Word2Vec model.",
+                    "Updated the project.json to reflect the implementation of the VectorDatabase and enhanced text preprocessing."
+                ],
+                "FilesModified": [
+                    "vector_database.py",
+                    "project.json"
+                ]
+            }
+        ],
+        "toDo": [        
+            {
+                "task": "Implement menu logic in main_menu.py",
+                "status": "Completed"
+            },
+            {
+                "task": "Implement agents management system in modules/menus/agents.py",
+                "status": "Completed"
+            },
+            {
+                "task": "Implement groups management system in modules/menus/groups.py",
+                "status": "Completed"
+            },
+            {
+                "task": "Implement task management system in modules/menus/task.py",
+                "status": "Completed"
+            },
+            {
+                "task": "Create agent, group, and task setup functions in main.py",
+                "status": "Completed"
+            },
+            {
+                "task": "Develop multi-agent conversation framework",
+                "status": "Pending"
+            },
+            {
+                "task": "Implement Human Intervention Mechanism",
+                "status": "Pending"
+            },
+            {
+                "task": "Design and implement a verification system for dynamic capabilities",
+                "status": "Pending"
+            },
+            {
+                "task": "Expand VectorDatabase to include pagination and sorting for search results, API endpoints, and multi-language support.",
+                "status": "Pending"
+            }
+        ]
+    }

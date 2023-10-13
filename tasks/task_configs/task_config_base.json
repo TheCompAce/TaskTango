@@ -2,7 +2,6 @@
     "taskName": "Programmer",
     "description": "Description of the task",
     "createdBy": "Brad",
-    "model": "OpenAI",
     "groups": [
         "ProgramCreationGroup"
     ],

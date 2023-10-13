@@ -29,7 +29,7 @@ class TaskManager(MainLoopArchitecture):
             }
         }
 
-        groups_list = task_config["groups"]
+        group_order = task_config["groups"]
 
         if len(task_config["groups"]) > 1:
             group_order_prompt = "Determine group order"
@@ -41,21 +41,46 @@ class TaskManager(MainLoopArchitecture):
 
             group_order_response = self.llm_simple_handler.ask(group_order_prompt, task_config["groups"])
 
-        prompts_json_string = json.dumps(prompts_json_object)
+            group_order = json.loads(group_order_response)
+        
+        task_prompts_json_object=prompts_json_object
+        for group_name in group_order:
+            group_config = self.get_group_config(group_name)
 
-        system_prompt = self.config["systemPrompt"]  # Extract the system prompt from the config
-        if os.path.isfile(system_prompt):
-            with open(system_prompt, 'r') as f:
-                system_prompt = f.read()
+            prompts_json_object = task_prompts_json_object
 
-        system_prompt_full = system_prompt
+            prompts_json_object["group"]= {
+                "name": group_name,
+                "variables": group_config["variables"],
+                "completionIndicators": group_config["completionIndicators"]
+            }
 
-        system_prompt_full = system_prompt_full + "\n" + prompts_json_string
-                
-        # Ask the LLM for a response
-        response = self.llm_handler.ask(system_prompt_full, self.prompt)
-        self.status_queue.put(response)  # Put the response into the status queue
-        self.pause()  # Stop the main loop thread and user input thread
+            prompts_json_string = json.dumps(prompts_json_object)
+
+            system_prompt = self.config["systemPrompt"]  # Extract the system prompt from the config
+            if os.path.isfile(system_prompt):
+                with open(system_prompt, 'r') as f:
+                    system_prompt = f.read()
+
+            system_prompt_full = system_prompt + "\n" + prompts_json_string
+                    
+            # Ask the LLM for a response
+            response = self.llm_handler.ask(system_prompt_full, self.prompt)
+            self.status_queue.put(response)  # Put the response into the status queue
+
+            self.pause()  # Stop the main loop thread and user input thread
+
+        self.stop()  # Stop the main loop thread and user input thread
+
+    def get_group_config(self, group_name):
+        # Assume group configurations are stored in json files named after the group in a 'groups_config' directory
+        config_file_path = f'groups/groups_config/{group_name}.json'
+        if os.path.isfile(config_file_path):
+            with open(config_file_path, 'r') as config_file:
+                group_config = json.load(config_file)
+            return group_config
+        else:
+            raise FileNotFoundError(f'Configuration file for group {group_name} not found.')
 
     def load_config(self, config_file):
         """
