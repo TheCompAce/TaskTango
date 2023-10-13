@@ -1,25 +1,22 @@
 {
-    "groupName": "GroupName",
-    "systemPrompt": "Overarching task or goal for this group",
+    "groupName": "ProgramCreationGroup",
+    "systemPrompt": "groups/system_prompts/ProgramCreationGroup.txt",
     "agents": [
-        "WebSearchAgent",
         "CodeGenAgent",
-        "DataAnalysisAgent",
-        "TextGenerationAgent",
-        "ImageProcessingAgent"
+        "TestingAgent",
+        "DocumentationAgent",
+        "VersionControlAgent",
+        "ReviewAgent"
     ],
-    "completionIndicators": ["### WEB DONE ###", "### CODE DONE ###"],
+    "completionIndicators": ["code_completed", "test_passed", "documentation_completed"],
     "variables": {
-        "search_depth": 3,
+        "code_completed": false,
+        "test_passed": false,
+        "documentation_completed": false,
         "code_complexity": "medium",
-        "review_standard": "high"
+        "review_standard": "high",
+        "documentation_standard": "comprehensive"
     },
     "dynamicAgentAllocation": true,
-    "longTerm": true,
-    "interGroupCommunication": ["OtherGroupName1", "OtherGroupName2"],
-    "allowAgentCloning": true,
-    "notification": {
-        "onCompletion": true,
-        "onError": true
-    }
+    "allowAgentCloning": true
 }

@@ -1,18 +1,15 @@
 {
-    "taskName": "TaskName",
+    "taskName": "Programmer",
     "description": "Description of the task",
-    "createdBy": "Identifier for creator",
+    "createdBy": "Brad",
     "model": "OpenAI",
     "groups": [
-        "GroupName1",
-        "GroupName2"
+        "ProgramCreationGroup"
     ],
-    "systemPrompt": "System prompt for the task",
-    "dependencies": ["Task1", "Task2"],
-    "completionIndicators": ["Indicator1", "Indicator2"],
+    "systemPrompt": "tasks/system_prompts/programming.txt",
+    "completionIndicators": ["code_completed"],
     "variables": {
-        "customVar1": "value1",
-        "customVar2": "value2"
+        "code_completed": "false"
     },
     "dynamicAllocation": true
 }

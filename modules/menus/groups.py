@@ -5,15 +5,12 @@ def add_group():
     # Gather information for a new group
     group_info = {}
     group_info["groupName"] = input("Enter the groupName: ")
-    group_info["systemPrompt"] = input("Enter the systemPrompt: ")
-    group_info["agents"] = input("Enter the agents: ")
-    group_info["completionIndicators"] = input("Enter the completionIndicators: ")
-    group_info["variables"] = input("Enter the variables: ")
-    group_info["dynamicAgentAllocation"] = input("Enter the dynamicAgentAllocation: ")
-    group_info["longTerm"] = input("Enter the longTerm: ")
-    group_info["interGroupCommunication"] = input("Enter the interGroupCommunication: ")
-    group_info["allowAgentCloning"] = input("Enter the allowAgentCloning: ")
-    group_info["notification"] = input("Enter the notification: ")
+    group_info["systemPrompt"] = input("Enter the system prompt (or file path): ")
+    group_info['agents'] = input('Enter agents (comma-separated): ').split(',')
+    group_info['variables'] = input('Enter variables (comma-separated): ').split(',')
+    group_info['completionIndicators'] = input('Enter completion indicators (comma-separated): ').split(',')
+    group_info['dynamicAllocation'] = input('Enable dynamic allocation? (yes/no): ').lower() == 'yes'
+    group_info["allowAgentCloning"] = input('Enable agent cloning? (yes/no): ').lower() == 'yes'
 
     # Save the group information to a JSON file
     with open(f"groups/group_configs/{group_info['groupName']}.json", 'w') as f:
@@ -35,7 +32,7 @@ def edit_group():
         return
     
     try:
-        with open(f"groups/{group_name}.json", 'r') as f:
+        with open(f"groups/group_configs/{group_name}.json", 'r') as f:
             group_info = json.load(f)
         print(f"Editing group: {group_name}")
         for key in group_info.keys():
@@ -43,7 +40,7 @@ def edit_group():
             if new_value:
                 group_info[key] = new_value
         # Save the updated group information
-        with open(f"groups/{group_info['groupName']}.json", 'w') as f:
+        with open(f"groups/group_configs/{group_info['groupName']}.json", 'w') as f:
             json.dump(group_info, f, indent=4)
         print(f"Group {group_name} edited successfully.")
     except FileNotFoundError:
@@ -67,7 +64,7 @@ def delete_group():
     confirmation = input(f"Are you sure you want to delete {group_name}? (yes/no): ")
     if confirmation.lower() == 'yes':
         try:
-            os.remove(f"groups/{group_name}.json")
+            os.remove(f"groups/group_configs/{group_name}.json")
             print(f"Group {group_name} deleted successfully.")
         except FileNotFoundError:
             print(f"Group {group_name} not found.")
