@@ -1,0 +1,6 @@
+Objective: Generate a Python function to sort a list of integers.
+Constraints: Do not use any built-in sort functions.
+Model: Mistral
+Data Sources: Code will be generated based on the objective.
+User Preferences: Use Python 3 syntax.
+TaskContext: {"TaskName": "SortListFunction", "Groups": {"Frontend": ["UI"], "Backend": ["Logic", "Data"], "DevOps": ["Testing"]}}

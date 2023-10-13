@@ -2,6 +2,7 @@
     "taskName": "TaskName",
     "description": "Description of the task",
     "createdBy": "Identifier for creator",
+    "model": "OpenAI",
     "groups": [
         "GroupName1",
         "GroupName2"

@@ -16,7 +16,12 @@
     "MainLoopArchitecture": {
         "Threading": "Main loop runs on a separate thread to allow for real-time user interactions.",
         "Communication": "Uses message queues for thread-safe communication between the main thread and task thread.",
-        "Commands": ["start", "stop", "pause", "inject prompt"],
+        "Commands": [
+            "start",
+            "stop",
+            "pause",
+            "inject prompt"
+        ],
         "ReturnData": "Task thread enqueues status updates for the main thread to dequeue and present to the user."
     },      
     "projectDetails": {
@@ -132,7 +137,19 @@
             "FilesModified": [
                 "project.json"
             ]
-        }          
+        },
+        {
+            "Date": "2023-10-12",
+            "Changes": [
+                "Discussed the architecture of the main loop.",
+                "Decided to run the main loop on a separate thread for real-time user interactions.",
+                "Agreed to use message queues for communication between the main thread and task thread.",
+                "Updated the project.json to include the 'MainLoopArchitecture' section."
+            ],
+            "FilesModified": [
+                "project.json"
+            ]
+        }               
     ],
     "toDo": [        
         {

@@ -1,6 +1,9 @@
+import json
+import os
 from modules.menus.agents import agent_menu
 from modules.menus.groups import groups_menu
 from modules.menus.tasks import task_menu
+from modules.task_man import TaskManager
 
 def setup_agent():
     agent_menu()
@@ -11,8 +14,31 @@ def setup_group():
 def setup_task():
     task_menu()
 
-def start_task(task_id):
-    print("Starting task with ID:", task_id)
+def start_task():
+    task_configs_path = "tasks/task_configs"  # Update this to your actual path
+    task_files = os.listdir(task_configs_path)
+    
+    while True:
+        print("===== Task List =====")
+        for idx, task_file in enumerate(task_files):
+            with open(os.path.join(task_configs_path, task_file), 'r') as f:
+                task_config = json.load(f)
+            print(f"{idx + 1}. {task_config.get('taskName', 'Unnamed Task')}")
+        print(f"{len(task_files) + 1}. Back")
+        
+        choice = input("Select a task or go back: ")
+        if choice.isdigit() and 1 <= int(choice) <= len(task_files):
+            selected_task_file = task_files[int(choice) - 1]
+            with open(os.path.join(task_configs_path, selected_task_file), 'r') as f:
+                selected_task_config = json.load(f)
+            print(f"Starting task: {selected_task_config.get('taskName', 'Unnamed Task')}")
+            # Here you would instantiate the TaskManager
+            break
+        elif choice == str(len(task_files) + 1):
+            print("Going back to main menu.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 def exit_system():
     print("Exiting system gracefully")
@@ -33,7 +59,7 @@ def show_menu():
         elif choice == '3':
             setup_task()
         elif choice == '4':
-            start_task("Task ID Here")
+            start_task()
         elif choice == '5':
             exit_system()
             break
