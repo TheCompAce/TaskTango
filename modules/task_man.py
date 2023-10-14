@@ -3,6 +3,7 @@ import os
 from modules.mainLoopArchitecture import MainLoopArchitecture
 from modules.utils.get_id import generate_uuid
 from modules.llm import LLM, ModelTypes
+from modules.vectorDatabase import VectorDatabase
 
 class TaskManager(MainLoopArchitecture):
     def __init__(self, config_file, prompt):
@@ -13,6 +14,8 @@ class TaskManager(MainLoopArchitecture):
         self.prompt = prompt
         self.llm_handler = LLM(self.config["model"])  # Initialize the LLM handler
         self.llm_simple_handler = LLM(ModelTypes.StableBeluga7B)
+
+        self.vector_db = VectorDatabase(path='server\data', name='long_term')
         
     def execute(self):
         self.start()  # Start the main loop thread and user input thread
@@ -71,6 +74,24 @@ class TaskManager(MainLoopArchitecture):
             self.pause()  # Stop the main loop thread and user input thread
 
         self.stop()  # Stop the main loop thread and user input thread
+
+    def create_response(self, response_text):
+        return self.vector_db.create_response(response_text)
+
+    def search_response(self, search_text):
+        return self.vector_db.search_response(search_text)
+
+    def update_response(self, response_id, new_response_text):
+        return self.vector_db.update_response(response_id, new_response_text)
+
+    def delete_response(self, response_id):
+        return self.vector_db.delete_response(response_id)
+
+    def train_untrained_responses(self):
+        return self.vector_db.train_untrained_responses()
+
+    def search_similar_conversations(self, text, top_n=5):
+        return self.vector_db.search_similar_conversations(text, top_n=top_n)
 
     def get_group_config(self, group_name):
         # Assume group configurations are stored in json files named after the group in a 'groups_config' directory
