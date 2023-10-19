@@ -1,5 +1,5 @@
 {
-    "agent_name": "CEO",
+    "agent_name": "CEOAgent",
     "description": "Head of Company",
     "type": "llm",
     "model": "OpenAI",

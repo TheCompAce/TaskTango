@@ -1,0 +1,292 @@
+INFO:gensim.utils:loading Word2Vec object from server\data\long_term.bin
+INFO:gensim.utils:loading wv recursively from server\data\long_term.bin.wv.* with mmap=None
+INFO:gensim.utils:setting ignored attribute cum_table to None
+INFO:gensim.utils:Word2Vec lifecycle event {'fname': 'server\\data\\long_term.bin', 'datetime': '2023-10-15T17:21:04.303391', 'gensim': '4.3.2', 'python': '3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}
+INFO:root:execute
+INFO:root:Threads started.
+INFO:root:execute - start
+INFO:root:group_order_response = ["ProgramCreationGroup", "ManagementGroup"]
+INFO:root:system_prompt_full: {"task": {"id": "Programmer", "variables": {"code_completed": "false"}, "completionIndicators": ["code_completed"]}}
+Create a list of task needed to complete the Objective.
+
+Return all data in the following json format (where "taskid" is hard coded to "task_data" ) ...
+
+###
+{
+"taskid": "task_data",
+"tasks": [{"Name": "Sample Task 1", "Completed" : false, "Description" : "Description of a task."}]
+}
+###
+INFO:root:system: {"task": {"id": "Programmer", "variables": {"code_completed": "false"}, "completionIndicators": ["code_completed"]}}
+Create a list of task needed to complete the Objective.
+
+Return all data in the following json format (where "taskid" is hard coded to "task_data" ) ...
+
+###
+{
+"taskid": "task_data",
+"tasks": [{"Name": "Sample Task 1", "Completed" : false, "Description" : "Description of a task."}]
+}
+###
+INFO:root:user: Create a python function that can search google, and return a list for "Title", "Description", and "URL" for the results.
+INFO:root:model: OpenAI
+INFO:root:response: {
+"taskid": "task_data",
+"tasks": [
+{
+"Name": "Create a python function",
+"Completed" : false,
+"Description" : "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."
+}
+]
+}
+INFO:root:response_text = {
+"taskid": "task_data",
+"tasks": [
+{
+"Name": "Create a python function",
+"Completed" : false,
+"Description" : "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."
+}
+]
+}
+INFO:root:task_id = task_data
+INFO:root:task_data = {"taskid": "task_data", "tasks": [{"Name": "Create a python function", "Completed": false, "Description": "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."}]}
+INFO:root:self.tasks = [{"Name": "Create a python function", "Completed": false, "Description": "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."}]
+INFO:gensim.utils:loading Word2Vec object from server\data\long_term.bin
+INFO:gensim.utils:loading wv recursively from server\data\long_term.bin.wv.* with mmap=None
+INFO:gensim.utils:setting ignored attribute cum_table to None
+INFO:gensim.utils:Word2Vec lifecycle event {'fname': 'server\\data\\long_term.bin', 'datetime': '2023-10-15T17:25:03.207773', 'gensim': '4.3.2', 'python': '3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}
+INFO:root:execute
+INFO:root:Threads started.
+INFO:root:execute - start
+INFO:gensim.utils:loading Word2Vec object from server\data\long_term.bin
+INFO:gensim.utils:loading wv recursively from server\data\long_term.bin.wv.* with mmap=None
+INFO:gensim.utils:setting ignored attribute cum_table to None
+INFO:gensim.utils:Word2Vec lifecycle event {'fname': 'server\\data\\long_term.bin', 'datetime': '2023-10-15T18:43:49.723819', 'gensim': '4.3.2', 'python': '3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}
+INFO:root:execute
+INFO:root:Threads started.
+INFO:root:execute - start
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+INFO:gensim.utils:loading Word2Vec object from server\data\long_term.bin
+INFO:gensim.utils:loading wv recursively from server\data\long_term.bin.wv.* with mmap=None
+INFO:gensim.utils:setting ignored attribute cum_table to None
+INFO:gensim.utils:Word2Vec lifecycle event {'fname': 'server\\data\\long_term.bin', 'datetime': '2023-10-16T11:07:21.319900', 'gensim': '4.3.2', 'python': '3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}
+INFO:root:execute
+INFO:root:Threads started.
+INFO:root:execute - start
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+INFO:root:group_order_response = <|system|>
+Determine the group order needed to acomplsh the "User Task". Return only a json array of group names in order of impartance to the task.
+Order group for "Create a python function that can search google, and return a list for "Title", "Description", and "URL" for the results.".</s>
+<|user|>
+[{"groupName": "ProgramCreationGroup", "description": "Handles the coding challenges of our task.", "systemPrompt": "groups/system_prompts/ProgramCreationGroup.txt", "agents": ["CodeGenAgent", "TestingAgent", "DocumentationAgent", "VersionControlAgent", "ReviewAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}, {"groupName": "ManagementGroup", "description": "Ensures that all task have been completed.", "systemPrompt": "groups/system_prompts/ManagementGroup.txt", "agents": ["CEOAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}]</s>
+<|>
+Assuming that the "User Task" is to create a python function that can search Google, the group order needed to accomplish this task would be:
+
+1. "ProgramCreationGroup"
+
+This group is responsible for the coding challenges of the task. The agents in this group are:
+- "CodeGenAgent"
+- "TestingAgent"
+- "DocumentationAgent"
+- "VersionControlAgent"
+- "ReviewAgent"
+
+These agents will ensure that the python function for Google search is developed, tested, documented, and version controlled according to the established standards.
+
+2. "ManagementGroup"
+
+This group ensures that all tasks have been completed. The agent in this group is the "CEOAgent."
+
+The "ManagementGroup" will monitor the progress of the "ProgramCreationGroup" and ensure that all completion indicators are met before declaring the task complete.
+
+The order of group importance is based on the fact that the "ProgramCreationGroup" is directly responsible for creating the python function, while the "ManagementGroup" ensures that the task is completed according to established standards.
+
+In terms of returning only a json array of group names, the result would be:
+INFO:root:Failed to get groups - <|system|>
+Determine the group order needed to acomplsh the "User Task". Return only a json array of group names in order of impartance to the task.
+Order group for "Create a python function that can search google, and return a list for "Title", "Description", and "URL" for the results.".</s>
+<|user|>
+[{"groupName": "ProgramCreationGroup", "description": "Handles the coding challenges of our task.", "systemPrompt": "groups/system_prompts/ProgramCreationGroup.txt", "agents": ["CodeGenAgent", "TestingAgent", "DocumentationAgent", "VersionControlAgent", "ReviewAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}, {"groupName": "ManagementGroup", "description": "Ensures that all task have been completed.", "systemPrompt": "groups/system_prompts/ManagementGroup.txt", "agents": ["CEOAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}]</s>
+<|>
+Assuming that the "User Task" is to create a python function that can search Google, the group order needed to accomplish this task would be:
+
+1. "ProgramCreationGroup"
+
+This group is responsible for the coding challenges of the task. The agents in this group are:
+- "CodeGenAgent"
+- "TestingAgent"
+- "DocumentationAgent"
+- "VersionControlAgent"
+- "ReviewAgent"
+
+These agents will ensure that the python function for Google search is developed, tested, documented, and version controlled according to the established standards.
+
+2. "ManagementGroup"
+
+This group ensures that all tasks have been completed. The agent in this group is the "CEOAgent."
+
+The "ManagementGroup" will monitor the progress of the "ProgramCreationGroup" and ensure that all completion indicators are met before declaring the task complete.
+
+The order of group importance is based on the fact that the "ProgramCreationGroup" is directly responsible for creating the python function, while the "ManagementGroup" ensures that the task is completed according to established standards.
+
+In terms of returning only a json array of group names, the result would be:
+INFO:root:system_prompt_full: {"task": {"id": "Programmer", "variables": {"code_completed": "false"}, "completionIndicators": ["code_completed"]}}
+Create a list of task needed to complete the Objective.
+
+Return all data in the following json format (where "taskid" is hard coded to "task_data" ) ...
+
+###
+{
+"taskid": "task_data",
+"tasks": [{"Name": "Sample Task 1", "Completed" : false, "Description" : "Description of a task."}]
+}
+###
+INFO:root:system: {"task": {"id": "Programmer", "variables": {"code_completed": "false"}, "completionIndicators": ["code_completed"]}}
+Create a list of task needed to complete the Objective.
+
+Return all data in the following json format (where "taskid" is hard coded to "task_data" ) ...
+
+###
+{
+"taskid": "task_data",
+"tasks": [{"Name": "Sample Task 1", "Completed" : false, "Description" : "Description of a task."}]
+}
+###
+INFO:root:user: Create a python function that can search google, and return a list for "Title", "Description", and "URL" for the results.
+INFO:root:model: OpenAI
+INFO:root:response: {
+"taskid": "task_data",
+"tasks": [
+{"Name": "Create a Python function for searching Google", "Completed" : false, "Description" : "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."}
+]
+}
+INFO:root:response_text = {
+"taskid": "task_data",
+"tasks": [
+{"Name": "Create a Python function for searching Google", "Completed" : false, "Description" : "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."}
+]
+}
+INFO:root:task_id = task_data
+INFO:root:task_data = {"taskid": "task_data", "tasks": [{"Name": "Create a Python function for searching Google", "Completed": false, "Description": "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."}]}
+INFO:root:self.tasks = [{"Name": "Create a Python function for searching Google", "Completed": false, "Description": "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results."}]
+INFO:gensim.utils:loading Word2Vec object from server\data\long_term.bin
+INFO:gensim.utils:loading wv recursively from server\data\long_term.bin.wv.* with mmap=None
+INFO:gensim.utils:setting ignored attribute cum_table to None
+INFO:gensim.utils:Word2Vec lifecycle event {'fname': 'server\\data\\long_term.bin', 'datetime': '2023-10-16T15:50:16.102766', 'gensim': '4.3.2', 'python': '3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}
+INFO:root:execute
+INFO:root:Threads started.
+INFO:root:execute - start
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+INFO:root:group_order_response = <|system|>
+Determine the group order needed to acomplsh the "User Task". Return only a JSON array of group names in order of impartance to the task. Like below ...
+
+###
+["Group1", "Group2"]
+###
+Order group for "Create a python function that can search google, and return a list for "Title", "Description", and "URL" for the results.".</s>
+<|user|>
+[{"groupName": "ProgramCreationGroup", "description": "Handles the coding challenges of our task.", "systemPrompt": "groups/system_prompts/ProgramCreationGroup.txt", "agents": ["CodeGenAgent", "TestingAgent", "DocumentationAgent", "VersionControlAgent", "ReviewAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}, {"groupName": "ManagementGroup", "description": "Ensures that all task have been completed.", "systemPrompt": "groups/system_prompts/ManagementGroup.txt", "agents": ["CEOAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}]</s>
+<|assistant|>
+To accomplish the task of "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results." we need to execute the following steps:
+
+1. Create a python function that can search google.
+2. Test the function to ensure it returns the expected results.
+3. Document the function and its usage.
+
+To accomplish these steps, we need the following groups and their agents:
+
+1. ProgramCreationGroup: 
+   - CodeGenAgent: responsible for creating the python function that can search google.
+   - TestingAgent: responsible for testing the function to ensure it returns the expected results.
+   - DocumentationAgent: responsible for documenting the function and its usage.
+   - VersionControlAgent: responsible for version control of the code.
+   - ReviewAgent: responsible for reviewing the code and ensuring it meets the standard.
+
+2. ManagementGroup: 
+   - CEOAgent: responsible for ensuring that all tasks have been completed.
+
+Based on the impartance of the task, the group order required to accomplish it would be:
+
+1. ProgramCreationGroup
+2.
+INFO:root:Failed to get groups - <|system|>
+Determine the group order needed to acomplsh the "User Task". Return only a JSON array of group names in order of impartance to the task. Like below ...
+
+###
+["Group1", "Group2"]
+###
+Order group for "Create a python function that can search google, and return a list for "Title", "Description", and "URL" for the results.".</s>
+<|user|>
+[{"groupName": "ProgramCreationGroup", "description": "Handles the coding challenges of our task.", "systemPrompt": "groups/system_prompts/ProgramCreationGroup.txt", "agents": ["CodeGenAgent", "TestingAgent", "DocumentationAgent", "VersionControlAgent", "ReviewAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}, {"groupName": "ManagementGroup", "description": "Ensures that all task have been completed.", "systemPrompt": "groups/system_prompts/ManagementGroup.txt", "agents": ["CEOAgent"], "completionIndicators": ["code_completed", "test_passed", "documentation_completed"], "variables": {"code_completed": false, "test_passed": false, "documentation_completed": false, "code_complexity": "medium", "review_standard": "high", "documentation_standard": "comprehensive"}, "dynamicAgentAllocation": true, "allowAgentCloning": true}]</s>
+<|assistant|>
+To accomplish the task of "Create a python function that can search google, and return a list for 'Title', 'Description', and 'URL' for the results." we need to execute the following steps:
+
+1. Create a python function that can search google.
+2. Test the function to ensure it returns the expected results.
+3. Document the function and its usage.
+
+To accomplish these steps, we need the following groups and their agents:
+
+1. ProgramCreationGroup: 
+   - CodeGenAgent: responsible for creating the python function that can search google.
+   - TestingAgent: responsible for testing the function to ensure it returns the expected results.
+   - DocumentationAgent: responsible for documenting the function and its usage.
+   - VersionControlAgent: responsible for version control of the code.
+   - ReviewAgent: responsible for reviewing the code and ensuring it meets the standard.
+
+2. ManagementGroup: 
+   - CEOAgent: responsible for ensuring that all tasks have been completed.
+
+Based on the impartance of the task, the group order required to accomplish it would be:
+
+1. ProgramCreationGroup
+2.
+INFO:root:system_prompt_full: {"task": {"id": "Programmer", "variables": {"code_completed": "false"}, "completionIndicators": ["code_completed"]}}
+Create a list of task needed to complete the Objective.
+
+Return all data in the following json format (where "taskid" is hard coded to "task_data" ) ...
+
+###
+{
+"taskid": "task_data",
+"tasks": [{"Name": "Sample Task 1", "Completed" : false, "Description" : "Description of a task."}]
+}
+###
+INFO:root:system: {"task": {"id": "Programmer", "variables": {"code_completed": "false"}, "completionIndicators": ["code_completed"]}}
+Create a list of task needed to complete the Objective.
+
+Return all data in the following json format (where "taskid" is hard coded to "task_data" ) ...
+
+###
+{
+"taskid": "task_data",
+"tasks": [{"Name": "Sample Task 1", "Completed" : false, "Description" : "Description of a task."}]
+}
+###
+INFO:root:user: Create a python function that can search google, and return a list for "Title", "Description", and "URL" for the results.
+INFO:root:model: OpenAI
+INFO:root:response: {
+"taskid": "task_data",
+"tasks": [
+    {
+        "Name": "Create a function to search Google",
+        "Completed": false,
+        "Description": "Create a Python function that can search Google and return a list of results containing the title, description, and URL for each result."
+    }
+]
+}
+INFO:root:response_text = {
+"taskid": "task_data",
+"tasks": [
+    {
+        "Name": "Create a function to search Google",
+        "Completed": false,
+        "Description": "Create a Python function that can search Google and return a list of results containing the title, description, and URL for each result."
+    }
+]
+}
+INFO:root:task_id = task_data
+INFO:root:task_data = {"taskid": "task_data", "tasks": [{"Name": "Create a function to search Google", "Completed": false, "Description": "Create a Python function that can search Google and return a list of results containing the title, description, and URL for each result."}]}
+INFO:root:self.tasks = [{"Name": "Create a function to search Google", "Completed": false, "Description": "Create a Python function that can search Google and return a list of results containing the title, description, and URL for each result."}]

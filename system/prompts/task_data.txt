@@ -1,0 +1,8 @@
+Return all data in the following json format (where "taskid" is hard coded to "task_data" ) ...
+
+###
+{
+"taskid": "task_data",
+"tasks": [{"Name": "Sample Task 1", "Completed" : false, "Description" : "Description of a task."}]
+}
+###

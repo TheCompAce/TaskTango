@@ -1,11 +1,13 @@
 {
     "taskName": "Programmer",
-    "description": "Description of the task",
+    "description": "Creates functions for python.",
     "createdBy": "Brad",
     "groups": [
-        "ProgramCreationGroup"
+        "ProgramCreationGroup",
+        "ManagementGroup"
     ],
-    "systemPrompt": "tasks/system_prompts/programming.txt",
+    "systemPrompt": "tasks/system_prompts/task_build.txt",
+    "model": "OpenAI",
     "completionIndicators": ["code_completed"],
     "variables": {
         "code_completed": "false"

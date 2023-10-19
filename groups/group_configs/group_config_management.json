@@ -1,13 +1,9 @@
 {
-    "groupName": "ProgramCreationGroup",
-    "description": "Handles the coding challenges of our task.",
-    "systemPrompt": "groups/system_prompts/ProgramCreationGroup.txt",
+    "groupName": "ManagementGroup",
+    "description" : "Ensures that all task have been completed.",
+    "systemPrompt": "groups/system_prompts/ManagementGroup.txt",
     "agents": [
-        "CodeGenAgent",
-        "TestingAgent",
-        "DocumentationAgent",
-        "VersionControlAgent",
-        "ReviewAgent"
+        "CEOAgent"
     ],
     "completionIndicators": ["code_completed", "test_passed", "documentation_completed"],
     "variables": {

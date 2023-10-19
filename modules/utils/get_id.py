@@ -1,7 +1,7 @@
 import uuid
 
 
-def generate_uuid(self):
+def generate_uuid():
     """
     Generate a unique UUID for the task.
     """

@@ -1,3 +1,4 @@
+import json
 import os
 import sqlite3
 from gensim.models import Word2Vec
@@ -32,16 +33,21 @@ class VectorDatabase:
     def initialize_db(self):
         try:
             conn = sqlite3.connect(self.db_path)
-            with self.conn.cursor() as c:
+            c = conn.cursor()
             
-                c.execute('CREATE TABLE IF NOT EXISTS responses (id INTEGER PRIMARY KEY, response TEXT, trained BOOLEAN DEFAULT 0)')
-                c.execute('CREATE INDEX IF NOT EXISTS idx_responses_trained ON responses (trained)')  # Index on trained field
-                c.execute('CREATE TABLE IF NOT EXISTS vector_data (id INTEGER PRIMARY KEY, vector BLOB, response_id INTEGER, FOREIGN KEY(response_id) REFERENCES responses(id))')
-                c.execute('CREATE INDEX IF NOT EXISTS idx_vector_data_response_id ON vector_data (response_id)')  # Index on response_id field
+            c.execute('CREATE TABLE IF NOT EXISTS responses (id INTEGER PRIMARY KEY, response TEXT, trained BOOLEAN DEFAULT 0)')
+            c.execute('CREATE INDEX IF NOT EXISTS idx_responses_trained ON responses (trained)')  # Index on trained field
+            c.execute('CREATE TABLE IF NOT EXISTS vector_data (id INTEGER PRIMARY KEY, vector BLOB, response_id INTEGER, FOREIGN KEY(response_id) REFERENCES responses(id))')
+            c.execute('CREATE INDEX IF NOT EXISTS idx_vector_data_response_id ON vector_data (response_id)')  # Index on response_id field
 
-                c.execute('ALTER TABLE responses ADD COLUMN timestamp DATETIME DEFAULT CURRENT_TIMESTAMP')  
-                
-                conn.commit()
+            # Check if timestamp column exists
+            c.execute("PRAGMA table_info(responses)")
+            columns = [column[1] for column in c.fetchall()]
+            if 'timestamp' not in columns:
+                c.execute('ALTER TABLE responses ADD COLUMN timestamp DATETIME DEFAULT CURRENT_TIMESTAMP')
+            
+            conn.commit()
+
             return conn  # Return the connection
         except Exception as e:
             logging.exception(f"An error occurred in initialize_db: {e}")
@@ -63,6 +69,18 @@ class VectorDatabase:
             return model  # Return the model
         except Exception as e:
             logging.exception(f"An error occurred in initialize_model: {e}")
+
+    def store_short_term_memory(self, task_id, data):
+        # Convert data to a string or JSON format
+        data_str = json.dumps(data)
+        # Store the data as a response in the VectorDatabase
+        self.vector_db.create_response(data_str)
+
+    def store_long_term_memory(self, task_data):
+        # Convert task_data to a string or JSON format
+        task_data_str = json.dumps(task_data)
+        # Store the task_data as a response in the VectorDatabase
+        self.vector_db.create_response(task_data_str)
 
     def ensure_connection(self):
         if self.conn is None:

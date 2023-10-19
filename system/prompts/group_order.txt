@@ -1,1 +1,5 @@
-Determine the group order needed to acomplsh the "User Task". Return only a json array og group names in order.
+Determine the group order needed to acomplsh the "User Task". Return only a JSON array of group names in order of impartance to the task. Like below ...
+
+###
+["Group1", "Group2"]
+###

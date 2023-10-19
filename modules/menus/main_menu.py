@@ -32,7 +32,24 @@ def start_task():
             with open(os.path.join(task_configs_path, selected_task_file), 'r') as f:
                 selected_task_config = json.load(f)
             print(f"Starting task: {selected_task_config.get('taskName', 'Unnamed Task')}")
-            # Here you would instantiate the TaskManager
+
+            start_prompt = input("What do you want this task to accomplish?")
+
+            # Check if the input is a path to a file
+            if os.path.isfile(start_prompt):
+                with open(start_prompt, 'r') as f:
+                    start_prompt = f.read()
+
+
+            # Initialize TaskManager
+            task_manager = TaskManager(config_file=os.path.join(task_configs_path, task_file), prompt=start_prompt)
+            
+            # Start the task
+            task_manager.execute()
+            
+            # Wait for the task to complete
+            task_manager.join()
+            
             break
         elif choice == str(len(task_files) + 1):
             print("Going back to main menu.")
